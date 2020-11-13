@@ -43,6 +43,9 @@ app.get('/api', (req, res) => {
       {method: 'GET', path: '/api/profile', description: 'Data about me'},
       {method: 'GET', path: '/api/books/', description: 'Get All books information'},
       // TODO: Write other API end-points description here like above
+      {method: 'POST', path: '/api/books/', description: 'Add a book information into database'},
+      {method: 'PUT', path: '/api/books/:id', description: 'Update a book information based upon the specified ID'},
+      {method: 'DELETE', path: '/api/books/:id', description: 'Delete a book based upon the specified ID'}
     ]
   })
 });
