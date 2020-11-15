@@ -52,14 +52,14 @@ app.get('/api', (req, res) => {
 // TODO:  Fill the values
 app.get('/api/profile', (req, res) => {
   res.json({
-    'name': '',
-    'homeCountry': '',
-    'degreeProgram': '',//informatics or CSE.. etc
+    'name': 'Sultan Sinem Eren',
+    'homeCountry': 'Turkey',
+    'degreeProgram': 'CSE',//informatics or CSE.. etc
     'email': '',
     'deployedURLLink': '',//leave this blank for the first exercise
     'apiDocumentationURL': '', //leave this also blank for the first exercise
-    'currentCity': '',
-    'hobbies': []
+    'currentCity': 'Munich',
+    'hobbies': ['swimming', 'playing piano']
 
   })
 });
@@ -87,15 +87,33 @@ app.post('/api/books/', (req, res) => {
    * New Book information in req.body
    */
   console.log(req.body);
+  var newBook = {};
+
   /*
    * TODO: use the books model and create a new object
    * with the information in req.body
    */
+
+   
+  db.books.create(req.body, (err, newBook)=>{
+
+    if(err)
+    {
+      throw err;
+    }
+    else{
   /*
    * return the new book information object as json
    */
-  var newBook = {};
-  res.json(newBook);
+      res.json(newBook);
+    }
+
+
+  });
+ 
+
+
+
 });
 
 /*
