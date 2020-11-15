@@ -159,15 +159,29 @@ app.delete('/api/books/:id', (req, res) => {
    * Get the book ID of book from the request parameters
    */
   const bookId = req.params.id;
+
+  var deletedBook = {};
+
   /*
    * TODO: use the books model and find using
    * the bookId and delete the book
    */
-  /*
+
+  db.books.findOneAndDelete({_id:bookId}, (err, deletedBook)=>{
+
+    if(err)
+    {
+      throw err;
+    }
+    else{
+          /*
    * Send the deleted book information as a JSON object
    */
-  var deletedBook = {};
   res.json(deletedBook);
+    }
+
+  }) 
+
 });
 
 
