@@ -126,15 +126,30 @@ app.put('/api/books/:id', (req, res) => {
   const bookId = req.params.id;
   const bookNewData = req.body;
   console.log(`book ID = ${bookId} \n Book Data = ${bookNewData}`);
+  var updatedBookInfo = {};
 
   /*
    * TODO: use the books model and find using the bookId and update the book information
    */
-  /*
+  db.books.findOneAndUpdate({_id: bookId}, bookNewData, {upsert: true}, (err, updatedBookInfo)=>
+  {
+
+    if(err)
+    {
+      throw err;
+    }
+    else{
+
+        /*
    * Send the updated book information as a JSON object
    */
-  var updatedBookInfo = {};
-  res.json(updatedBookInfo);
+      res.json(updatedBookInfo);
+
+    }
+
+  })
+
+
 });
 /*
  * Delete a book based upon the specified ID
